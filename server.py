@@ -9,8 +9,8 @@ def name():
     dictionary = {
         "name": "Erica"
     }
-    my_name = dictionary.json()
-    return my_name
+    # my_name = dictionary.json()
+    return dictionary # my_name
 
 
 @app.route("/hello/<name>", methods=["GET"])
