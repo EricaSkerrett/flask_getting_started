@@ -9,8 +9,7 @@ def name():
     dictionary = {
         "name": "Erica"
     }
-    # my_name = dictionary.json()
-    return dictionary # my_name
+    return jsonify(dictionary)
 
 
 @app.route("/hello/<name>", methods=["GET"])
@@ -23,12 +22,14 @@ def hello(name):
 
 @app.route("/distance", methods=["POST"])
 def distance():
-    r = request.get_json()
-    p = r.json
-    a, b = p[0, 1]
-    d = (b(1)-a(1)) ^ 2 + (b(0)-a(0)) ^ 2
-    d = math.sqrt(d)
+    r = request.get_json() #already parsed
+    # p = r.json()
+    a = r["a"]
+    b = r["b"]
+    temp = (b[1]-a[1]) ^ 2 + (b[0]-a[0]) ^ 2
+    d = math.sqrt(temp)
     print(d)
+    return jsonify(d)
 
 
 if __name__ == "__main__":
